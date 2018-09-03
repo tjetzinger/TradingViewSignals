@@ -27,7 +27,7 @@ module.exports = function() {
                     let message = _.replace(mail.subject, 'TradingView Alert: ', '');
                     let symbol = extractSymbol(message);
                     if(symbol === undefined)
-                        throw Error('No valid pair found in given TradingView alert: ' + message);
+                        throw Error('No valid pair found for given TradingView alert: ' + message);
                     let lastPrice = await exchange.getTickerPrice(symbol);
                     message = message + ' Price: ' + lastPrice;
                     signal.distribute(message);
